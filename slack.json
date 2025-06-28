@@ -1,0 +1,61 @@
+{
+  "display_information": {
+    "name": "Genehmigungs-Pilot",
+    "description": "Stellt einen benutzerdefinierten Genehmigungs-Schritt bereit.",
+    "background_color": "#4a154b"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "Genehmigungs-Pilot",
+      "always_online": true
+    }
+  },
+  "functions": {
+    "request_approval": {
+      "title": "Genehmigungsanfrage senden",
+      "description": "Postet eine Anfrage und wartet auf eine Entscheidung.",
+      "input_parameters": {
+        "approver_ids": {
+          "type": "slack#/types/array",
+          "items": { "type": "slack#/types/user_id" },
+          "description": "Personen, die genehmigen müssen"
+        },
+        "request_channel_id": {
+          "type": "slack#/types/channel_id",
+          "description": "Kanal, in dem die Anfrage gepostet wird"
+        },
+        "request_text": {
+          "type": "slack#/types/string",
+          "description": "Der Text der Anfrage"
+        },
+        "requester_id": {
+          "type": "slack#/types/user_id",
+          "description": "Person, die den Antrag gestellt hat"
+        }
+      },
+      "output_parameters": {
+        "decision": {
+          "type": "slack#/types/string",
+          "description": "Die getroffene Entscheidung (Genehmigt/Abgelehnt)"
+        },
+        "comment": {
+            "type": "slack#/types/string",
+            "description": "Optionaler Kommentar des Genehmigers"
+        }
+      }
+    }
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": ["chat:write", "users:read"]
+    }
+  },
+  "settings": {
+    "interactivity": {
+      "is_enabled": true
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}
